@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Models;
+using OnlineBooks.Models;
 
-namespace MyCompany.Controllers
+namespace OnlineBooks.Controllers
 {
     [Authorize]
     public class AccountController : Controller

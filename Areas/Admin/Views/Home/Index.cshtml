@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IQueryable<Books>
+@{
     string strTitle = "Панель администратора";
     ViewBag.Title = strTitle;
 }
@@ -6,15 +7,30 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <h3>Наши услуги</h3>
-        <div class="div-box">
-            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Добавить услугу</a>
-        </div>
-        
     </div>
-    <div class="div-box">
-        <h3>Добавить книгу</h3>
+    @if (Model.Any())
+    {
+        <div>
+            @foreach (Books entity in Model)
+            {
+                <div>
+                    <a asp-area="Admin" asp-controller="Add" asp-action="Edit" asp-route-id="@entity.Id">Редактировать</a>
+                    |
+                    <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="Add" asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@entity.Id">
+                        <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Удалить</a>
+                    </form>
+                    |
+                    <a asp-area="" asp-controller="OnlineBook" asp-action="Index" asp-route-id="@entity.Id">
+                    </a>
+                </div>
+            }
         </div>
+    }
+    <div class="div-box">
+        <h3>Редактировать страницы сайта</h3>
+        <a asp-area="Admin" asp-controller="Add" asp-action="Edit">Добавить</a>
+    </div>
     <div class="div-box">
         <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
             <input type="submit" value="Выйти" />

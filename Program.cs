@@ -1,10 +1,15 @@
-using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineBooks.Data;
-using OnlineBooks.Service;
+    using MyCompany.Domain.Repositories.Abstract;
+    using OnlineBooks.Data;
+    using OnlineBooks.Data.Repositories.EntityFramework;
+    using OnlineBooks.Service;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddTransient<IBooksRepository, EFBooksRepository>();
+builder.Services.AddTransient<DataManager>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(
@@ -22,7 +27,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(opts =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.Cookie.Name = "myCompanyAuth";
+    options.Cookie.Name = "OnlineBooksAuth";
     options.Cookie.HttpOnly = true;
     options.LoginPath = "/account/login";
     options.AccessDeniedPath = "/account/accessdenied";
@@ -64,7 +69,5 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
 
 app.Run();

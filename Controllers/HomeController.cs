@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineBooks.Models;
 using System.Diagnostics;
+using OnlineBooks.Data;
 
 namespace OnlineBooks.Controllers
 {
+    
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        List<Books> books;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()

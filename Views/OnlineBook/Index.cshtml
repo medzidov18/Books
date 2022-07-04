@@ -1,0 +1,22 @@
+﻿@model IQueryable<Books>
+@{
+    ViewBag.Title = "Книги";
+}
+
+<div>
+    @if (Model.Any())
+    {
+        <ul class="big-image-list">
+            @foreach (Books entity in Model)
+            {
+                <li>
+                    <a asp-area="" asp-controller="OnlineBook" asp-action="Index" asp-route-id="@entity.Id">
+                        @*здесь будет текст*@
+                    </a>
+                    <h4>@entity.BookName</h4>
+                    <p>@entity.BookAuthor</p>
+                </li>
+            }
+        </ul>
+    }
+</div>
