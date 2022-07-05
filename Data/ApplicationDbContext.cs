@@ -13,7 +13,10 @@ namespace OnlineBooks.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }
 
         public DbSet<Books> AllBooks { get; set; }
 

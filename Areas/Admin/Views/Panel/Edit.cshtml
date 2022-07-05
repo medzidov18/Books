@@ -6,24 +6,23 @@
 <div>
     <h2>"Добавить запись"</h2>
     <div>
-        <form asp-area="Admin" asp-controller="Add" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-area="Admin" asp-controller="Panel" asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="BookFilePath" />
 
             <div asp-validation-summary="All"></div>
-            <div class="div-box">
+            <div>
                 <label asp-for="BookName"></label>
                 <input asp-for="BookName" />
                 <span asp-validation-for="BookName"></span>
             </div>
-            <div class="div-box">
+            <div>
                 <label asp-for="BookAuthor"></label>
                 <input asp-for="BookAuthor" />
                 <span asp-validation-for="BookAuthor"></span>
             </div>
-            <div class="div-box">
+            <div class="book-file">
                 <label asp-for="BookFilePath"></label>
-                <input type="file" name="bookFile" id="bookFile" />
+                <input type="file" name="fileOfBook" /><br>
             </div>
             <input type="submit" value="Сохранить" />
         </form>

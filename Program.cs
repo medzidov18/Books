@@ -1,10 +1,10 @@
-    using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-    using MyCompany.Domain.Repositories.Abstract;
-    using OnlineBooks.Data;
-    using OnlineBooks.Data.Repositories.EntityFramework;
-    using OnlineBooks.Service;
+using MyCompany.Domain.Repositories.Abstract;
+using OnlineBooks.Data;
+using OnlineBooks.Data.Repositories.EntityFramework;
+using OnlineBooks.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1787,7 +1787,8 @@ input::-moz-focus-inner {
 		-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
 		transition: background-color .25s ease-in-out, color .25s ease-in-out;
 		text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
-	}
+        margin-top: 20px;
+    }
 
 		input[type="button"]:disabled, input[type="button"].disabled,
 		input[type="submit"]:disabled,
@@ -3003,3 +3004,84 @@ input::-moz-focus-inner {
 			}
 
 	}
+
+.book-file {
+    padding: 10px 0;
+}
+
+.book-file label {
+    display: block;
+}
+
+.book-file a {
+    display: block;
+}
+.edit-button {
+	cursor: pointer;
+	background-color: #228b22;
+	background-image: url("images/bg01.png");
+	border-radius: 0.4em;
+	text-align: center;
+	box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
+	color: #fff;
+	padding: .8em 1em calc(.8em + 3px);
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.delete-button {
+	cursor: pointer;
+	background-color: #232323;
+	background-image: url("images/bg01.png");
+	border-radius: 0.4em;
+	text-align: center;
+	box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
+	color: #fbfbfb;
+    padding: .8em 1em calc(.8em + 3px);
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.add-button {
+	cursor: pointer;
+	background-color: #daa520;
+	background-image: url("images/bg01.png");
+	border-radius: 0.4em;
+	text-align: center;
+	box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
+	color: #fbfbfb;
+    padding: .8em 1em calc(.8em + 3px);
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+	border-bottom-right-radius: 15px font-weight: 700;
+	text-decoration: none;
+	-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
+	margin-bottom: 20px;
+}
+
+.add-books {
+	font-size: 25px;
+	margin-top: 15px;
+    margin-bottom: 15px;
+}
+.admin {
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
