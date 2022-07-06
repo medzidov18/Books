@@ -15,8 +15,9 @@
 
 				<!-- Search -->
 					<section class="box search">
-						<form method="post" action="#">
-							<input type="text" class="text" name="search" placeholder="Search" />
+						<form method="get" asp-controller="Home" asp-action="Index">
+                            <input type="search" placeholder="Search Book" value="@ViewData["GetBookDetails"]" name="EmpSearch"/>
+                            <input type="submit" value="Search" class="btn btn-primary, text-center"/>
 						</form>
 					</section>
 

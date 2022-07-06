@@ -2046,7 +2046,6 @@ input::-moz-focus-inner {
 
 		.box.search form input {
 			position: relative;
-			padding-right: 34px;
 		}
 
 		.box.search form:before {

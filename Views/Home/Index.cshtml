@@ -1,1 +1,38 @@
-﻿
+﻿@model IEnumerable<Books>
+@{
+    ViewData["Title"] = "Книги онлайн";
+}
+
+<h2>Самые популярные книги</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookAuthor)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var obj in Model)
+    {
+        <tr>
+            <td width="40%">
+                @obj.BookName
+            </td>
+            <td width="40%">
+                @obj.BookAuthor
+            </td>
+            <td>
+                <div class="w-75" role="group">
+                    <a asp-controller="Read" asp-action="Index" asp-route-id="@obj.Id" class="btn btn-primary mx-2"> <i class="fa fa-book"></i> Читать</a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
