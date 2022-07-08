@@ -17,14 +17,27 @@ namespace OnlineBooks.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            return View();
+            int pageSize = 5;
+
+            IQueryable<Books> source = _context.AllBooks.Include(x => x.BookName);
+            var count = await source.CountAsync();
+            var items = await source.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageViewModel = pageViewModel,
+                MyBooks = items
+            };
+            return View(viewModel);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string EmpSearch)
+        public async Task<IActionResult> Index(string EmpSearch, int page = 1)
         {
+            int pageSize = 5;
             ViewData["GetBookDetails"] = EmpSearch;
 
             var EmpQuery = from x in _context.AllBooks select x;
@@ -32,7 +45,17 @@ namespace OnlineBooks.Controllers
             {
                 EmpQuery = EmpQuery.Where(x => x.BookName.Contains(EmpSearch) || x.BookAuthor.Contains(EmpSearch));
             }
-            return View(await EmpQuery.AsNoTracking().ToListAsync());
+
+            var count = await EmpQuery.CountAsync();
+            var items = await EmpQuery.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageViewModel = pageViewModel,
+                MyBooks = items
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

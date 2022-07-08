@@ -18,7 +18,10 @@ namespace OnlineBooks.Models
         
         [Display(Name = "Автор книги")]
         public string BookAuthor { get; set; }
-        
+
+        [Display(Name = "Картина")]
+        public string ImageFilePath { get; set; }
+
         [Display(Name = "Файл книги")]
         public string BookFilePath { get; set; }
     }

@@ -23,7 +23,7 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: middle;}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -2267,7 +2267,7 @@ input::-moz-focus-inner {
 	#sidebar {
 		color: rgba(255, 255, 255, 0.55);
 		text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
-		width: 14em;
+		width: 20em;
 		padding: 3em 1.35em 1em 1.15em;
 		background: #364050 url("images/bg01.png");
 		overflow-y: auto;
@@ -2289,6 +2289,7 @@ input::-moz-focus-inner {
 
 		#sidebar form input, #sidebar form select, #sidebar form textarea {
 			border: 0;
+            width: 100%;
 		}
 
 		#sidebar section, #sidebar nav {
@@ -3005,7 +3006,7 @@ input::-moz-focus-inner {
 	}
 
 .book-file {
-    padding: 10px 0;
+	padding: 10px 0;
 }
 
 .book-file label {
@@ -3061,9 +3062,30 @@ input::-moz-focus-inner {
 	text-align: center;
 	box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
 	color: #fbfbfb;
-    padding: .8em 1em calc(.8em + 3px);
+    padding: .8em 3em calc(.8em + 3px);
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
+	border-bottom-right-radius: 15px font-weight: 700;
+	text-decoration: none;
+	-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	transition: background-color .25s ease-in-out, color .25s ease-in-out;
+	text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
+	margin-bottom: 20px;
+}
+
+.read-button {
+	cursor: pointer;
+	background-color: #daa520;
+	background-image: url("images/bg01.png");
+	border-radius: 0.4em;
+	text-align: center;
+	box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15);
+	color: #fbfbfb;
+	padding: .3em 1em calc(.2em + 1px);
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
 	border-bottom-right-radius: 15px font-weight: 700;
 	text-decoration: none;
 	-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
@@ -3084,3 +3106,31 @@ input::-moz-focus-inner {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+.img-block {
+	display: block;
+	width: 100px;
+    height: 150px;
+}
+.reading {
+    font-family: 'Times New Roman';
+	font-size: 40px;
+	color: orange;
+	margin-bottom: 20px;
+}
+.textOfBook {
+	font-family: 'Times New Roman';
+	font-size: 20px;
+}
+@font-face {
+	font-family: "Gideon Roman";
+	src: url("../webfonts/GideonRoman-Regular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Times New Roman";
+	src: url("../webfonts/times-new-roman.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+} 

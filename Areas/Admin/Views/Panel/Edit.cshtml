@@ -5,7 +5,7 @@
 
 <div>
     <h2>"Добавить запись"</h2>
-    <div>
+    <div>  
         <form asp-area="Admin" asp-controller="Panel" asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
 
@@ -19,6 +19,13 @@
                 <label asp-for="BookAuthor"></label>
                 <input asp-for="BookAuthor" />
                 <span asp-validation-for="BookAuthor"></span>
+            </div>
+            <div class="book-file">
+                <label asp-for="ImageFilePath"></label>
+                <input type="file" name="imageOfBook" id="imageOfBook" />
+                <div>
+                    <img class="img-block" src="~/images/@Model.ImageFilePath" />
+                </div>
             </div>
             <div class="book-file">
                 <label asp-for="BookFilePath"></label>

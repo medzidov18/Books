@@ -1,19 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
 using OnlineBooks.Data;
 using OnlineBooks.Models;
 using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Microsoft.AspNetCore.Hosting.Server;
 
 namespace OnlineBooks.Controllers
 {
     public class ReadController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public ReadController(ApplicationDbContext context)
+        private IHostingEnvironment _environment;
+        public ReadController(ApplicationDbContext context, IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         public IActionResult Index(Guid? id)
@@ -24,9 +29,9 @@ namespace OnlineBooks.Controllers
             }
 
             var Book = _context.AllBooks.Find(id);
-            string path = $@"C:\Users\Asus\Projects\OnlineBooks\OnlineBooks\wwwroot\files\{Book.BookFilePath}";
-
-            Response.Write("some text");
+            string[] text = System.IO.File.ReadAllLines($@"C:\Users\Asus\Projects\OnlineBooks\OnlineBooks\wwwroot\files\{Book.BookFilePath}");
+            ViewBag.Data = text;
+            ViewBag.Book = Book;
 
             return View();
         }

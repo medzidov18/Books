@@ -27,14 +27,22 @@ namespace OnlineBooks.Areas.Admin.Controllers
 
 
             [HttpPost]
-            public async Task<IActionResult> Edit(Books model, IFormFile fileOfBook)
+            public async Task<IActionResult> Edit(Books model, IFormFile fileOfBook, IFormFile imageOfBook)
             {
             
                     model.BookFilePath = fileOfBook.FileName;
-                    using (var stream = new FileStream(Path.Combine(_hostingEnvironment.WebRootPath, "files/", fileOfBook.FileName), FileMode.Create))
+                    model.ImageFilePath = imageOfBook.FileName;
+
+                    using (var streamImage = new FileStream(Path.Combine(_hostingEnvironment.WebRootPath, "images/", imageOfBook.FileName), FileMode.Create))
                     {
-                        await fileOfBook.CopyToAsync(stream);
+                        imageOfBook.CopyToAsync(streamImage);
                     }
+                    
+                    using (var streamText = new FileStream(Path.Combine(_hostingEnvironment.WebRootPath, "files/", fileOfBook.FileName), FileMode.Create))
+                    {
+                        await fileOfBook.CopyToAsync(streamText);
+                    }
+
                     _dataManager.AllBooks.SaveBooks(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
                 return View(model);
