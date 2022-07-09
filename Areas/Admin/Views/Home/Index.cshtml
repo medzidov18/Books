@@ -16,9 +16,6 @@
                         <input type="hidden" name="id" value="@entity.Id">
                         <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Удалить книгу "@entity.BookName"</a>
                     </form>
-                    |
-                    <a asp-area="Admin" asp-controller="OnlineBook" asp-action="Index" asp-route-id="@entity.Id">
-                    </a>
                 </div>
             }
         </div>
