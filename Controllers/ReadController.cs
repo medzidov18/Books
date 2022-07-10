@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using OnlineBooks.Data;
 using OnlineBooks.Models;
 using System;
+using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
@@ -21,19 +22,32 @@ namespace OnlineBooks.Controllers
             _environment = environment;
         }
 
-        public IActionResult Index(Guid? id)
+        public IActionResult Index(Guid? id, int page = 1)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var Book = _context.AllBooks.Find(id);
+            int pageSize = 120;
+          
+            Books Book = _context.AllBooks.Find(id);
             string[] text = System.IO.File.ReadAllLines($@"C:\Users\Asus\Projects\OnlineBooks\OnlineBooks\wwwroot\files\{Book.BookFilePath}");
-            ViewBag.Data = text;
-            ViewBag.Book = Book;
+            var count = text.Length;
+            var items = text.Skip((page - 1) * pageSize).Take(pageSize);
 
-            return View();
+            ViewBag.Data = items;
+            ViewBag.Book = Book;
+            ViewBag.Page = page;
+
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            TextViewModel viewModel = new TextViewModel()
+            {
+                PageViewModel = pageViewModel,
+                MyBook = Book
+            };
+            
+            return View(viewModel);
         }
     }
 }

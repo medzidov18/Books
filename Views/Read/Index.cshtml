@@ -1,5 +1,11 @@
-﻿<h2 class="reading">@ViewBag.Book.BookAuthor</h2>
+﻿@model TextViewModel
+@{
+    ViewData["Title"] = Model.MyBook.BookName;
+}
+
+<h2 class="reading">@ViewBag.Book.BookAuthor</h2>
 <h2 class="reading">@ViewBag.Book.BookName</h2>
+<h2 class="reading">Страница номер @ViewBag.Page</h2>
 
 <div>   
     @foreach (string text in ViewBag.Data)
@@ -7,3 +13,22 @@
         <h3 class="textOfBook">@text</h3>
     }
 </div>
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="button previous">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="button next">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
