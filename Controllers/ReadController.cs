@@ -36,11 +36,13 @@ namespace OnlineBooks.Controllers
             var count = text.Length;
             var items = text.Skip((page - 1) * pageSize).Take(pageSize);
 
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            
             ViewBag.Data = items;
             ViewBag.Book = Book;
             ViewBag.Page = page;
-
-            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            ViewBag.allPages = pageViewModel.TotalPages;
+            
             TextViewModel viewModel = new TextViewModel()
             {
                 PageViewModel = pageViewModel,

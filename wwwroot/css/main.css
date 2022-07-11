@@ -3202,6 +3202,12 @@ body {
 .copyright-footer {
     margin-top: 300px;
 }
+.go_to {
+	width: 130px;
+    border-radius: 0.4em;
+    margin-top: 15px;
+    background-color: #e8e8e8;
+}
 @media screen and (max-width: 650px) {
     .column {
         width: 100%;

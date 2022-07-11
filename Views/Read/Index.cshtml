@@ -5,7 +5,7 @@
 
 <h2 class="reading">@ViewBag.Book.BookAuthor</h2>
 <h2 class="reading">@ViewBag.Book.BookName</h2>
-<h2 class="reading">Страница номер @ViewBag.Page</h2>
+<h2 class="reading">Страница номер @ViewBag.Page из @ViewBag.allPages</h2>
 
 <div>   
     @foreach (string text in ViewBag.Data)
@@ -14,6 +14,7 @@
     }
 </div>
 
+<div>
 @if (Model.PageViewModel.HasPreviousPage)
 {
     <a asp-action="Index"
@@ -23,6 +24,7 @@
         Назад
     </a>
 }
+
 @if (Model.PageViewModel.HasNextPage)
 {
     <a asp-action="Index"
@@ -32,3 +34,12 @@
         <i class="glyphicon glyphicon-chevron-right"></i>
     </a>
 }
+</div>
+<input type="text" class="go_to" placeholder="Нужная страница" id="url_page">
+<script>
+    document.getElementById('url_page').onkeydown = function(e){
+        if(e.keyCode == 13){
+            window.location = window.location.origin + window.location.pathname + '?page=' + document.getElementById("url_page").value;
+        }
+    };
+</script>
