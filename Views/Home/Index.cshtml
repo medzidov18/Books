@@ -1,0 +1,66 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Книги онлайн";
+    string hasPreviousPage = Model.PageViewModel.HasPreviousPage ? "" : "disabled";
+    string hasNextPage = Model.PageViewModel.HasNextPage ? "" : "disabled";
+}
+
+<h2 class="add-books">Самые популярные книги:</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Книга
+        </th>
+        <th>
+            Название книги
+        </th>
+        <th>
+            Автор книги
+        </th>
+
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var obj in Model.MyBooks)
+    {
+        <tr>
+            <td width="20%">
+                <img src="~/images/@obj.ImageFilePath" alt="" class="img-block" />
+            </td>
+            <td width="40%">
+                @obj.BookName
+            </td>
+            <td width="25%">
+                @obj.BookAuthor
+            </td>
+            <td>
+                <div class="w-90" role="group">
+                    <a asp-controller="Read" asp-action="Index" asp-route-id="@obj.Id" class="read-button"> <i class="fa fa-book"></i> Читать</a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="button previous">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="button next">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

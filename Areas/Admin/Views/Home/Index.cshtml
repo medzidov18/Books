@@ -1,0 +1,34 @@
+﻿@model IQueryable<Books>
+
+<div>
+    <h2 class="admin">Панель администратора</h2>
+    <div>
+    </div>
+    @if (Model.Any())
+    {
+        <div>
+            @foreach (Books entity in Model)
+            {
+                <div>
+                    <a class="edit-button" asp-area="Admin" asp-controller="Panel" asp-action="Edit" asp-route-id="@entity.Id">Редактировать Книгу "@entity.BookName"</a>
+                    |
+                    <form style="display: inline-block;" id="form-@entity.Id" class="delete-button" asp-area="Admin" asp-controller="Panel" asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@entity.Id">
+                        <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Удалить книгу "@entity.BookName"</a>
+                    </form>
+                </div>
+            }
+        </div>
+    }
+    <div class="div-box">
+        <h2 class="add-books">Редактировать страницы сайта</h2>
+        <a asp-area="Admin" asp-controller="Panel" asp-action="Edit" class="add-button">Добавить</a>
+    </div>
+    <div class="div-box">
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+            <input type="submit" value="Выйти" />
+        </form>
+    </div>
+</div>
+
+
